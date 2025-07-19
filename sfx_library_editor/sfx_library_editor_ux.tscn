@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://p0qe802temgo"]
+
+[ext_resource type="Script" uid="uid://bq4p0opbhki17" path="res://addons/sfx_library_editor/sfx_library_editor_ux.gd" id="1_yhi2s"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_keys_navigation_container", "_values_container", "_new_sfx_tag_button", "_delete_sfx_tag_button", "_delete_sfx_button", "_new_sfx_tag_input", "_ap_selected_audio_name_label", "_ap_audio_stream_player", "_ap_stream_progress_bar", "_ap_play_button", "_ap_pause_button", "_ap_restart_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yhi2s")
+_keys_navigation_container = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer")
+_values_container = NodePath("HBoxContainer/ScrollContainer/ItemList")
+_new_sfx_tag_button = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NewSFXTag")
+_delete_sfx_tag_button = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/DeleteSFXTag")
+_delete_sfx_button = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/DeleteSFX")
+_new_sfx_tag_input = NodePath("HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/SFXTagNameInput")
+_ap_selected_audio_name_label = NodePath("HBoxContainer/VBoxContainer/SelectedAudioName")
+_ap_audio_stream_player = NodePath("AudioStreamPlayer")
+_ap_stream_progress_bar = NodePath("HBoxContainer/VBoxContainer/ProgressBar")
+_ap_play_button = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Play")
+_ap_pause_button = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Pause")
+_ap_restart_button = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Restart")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NewSFXTag" type="Button" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "New SFX Tag"
+
+[node name="DeleteSFXTag" type="Button" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Delete SFX Tag"
+
+[node name="DeleteSFX" type="Button" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Delete SFX"
+
+[node name="SFXTagNameInput" type="LineEdit" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Input a sfx tag name... i.e ui, attacks"
+
+[node name="VBoxContainer" type="ItemList" parent="HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ItemList" type="ItemList" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SelectedAudioName" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 9.645)
+layout_mode = 2
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Pause" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+
+[node name="Restart" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
