@@ -58,7 +58,6 @@ func _drop_data(position: Vector2, data: Variant) -> void:
 	for path in data.get("files"):
 		var obj = load(path)
 		if obj is not AudioStream: 
-			print_debug("These are not audio streams.")
 			return
 			
 	if !_sfx_reference.sfx_library.has(_selected_key_name): return
@@ -69,7 +68,6 @@ func _drop_data(position: Vector2, data: Variant) -> void:
 
 
 func load_sfx_library(sfx_library: SFXLibrary):
-	print_debug("Loading...", sfx_library)
 	_sfx_reference = sfx_library
 	_refresh()
 
@@ -78,7 +76,6 @@ func _refresh():
 	_keys_navigation_container.clear()
 	_values_container.clear()
 	for each in _sfx_reference.sfx_library.keys():
-		print_debug(each)
 		var i = _keys_navigation_container.add_item(each)
 	if _selected_key_name != "" and _sfx_reference.sfx_library.keys().has(_selected_key_name):
 		_on_key_pressed(_selected_key_id)
@@ -124,7 +121,6 @@ func _on_key_pressed(id):
 		return
 	_selected_key_name = key
 	_selected_key_id = id
-	print_debug(_selected_key_id)
 	var values = _sfx_reference.sfx_library.get(key)
 	#_keys_navigation_container.clear()
 	_values_container.clear()
@@ -144,7 +140,6 @@ func _load_player():
 	if is_instance_valid(_ap_audio_stream_player) == false: return
 	
 	var stream: AudioStream = _sfx_reference.sfx_library.get(_selected_key_name)[_selected_value]
-	#print_debug(stream)
 	_ap_selected_audio_name_label.text = str(stream)
 	_ap_audio_stream_player.stream = stream
 
@@ -169,8 +164,4 @@ func _restart():
 
 
 func _save_reference():
-	print_debug("Saving")
-	print_debug(_sfx_reference)
-	print_debug(_sfx_reference.resource_path)
 	var ok = ResourceSaver.save(_sfx_reference, _sfx_reference.resource_path)
-	print_debug(ok)
